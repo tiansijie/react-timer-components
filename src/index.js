@@ -1,2 +1,3 @@
 import Deplay from "./delay";
-export { Deplay };
+import Expire from "./expire";
+export { Deplay, Expire };

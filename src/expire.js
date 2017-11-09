@@ -1,22 +1,20 @@
 import React from "react";
-export default class Delay extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            component: null
-        };
+export default class Expire extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { component: props.children }
     }
     componentDidMount() {
         if (this.props.time) {
             setTimeout(() => {
                 this.setState({
-                    component: this.props.children
-                })
+                    component: null
+                });
             }, this.props.time);
         }
         else {
             this.setState({
-                component: this.props.children
+                component: null
             });
         }
     }
