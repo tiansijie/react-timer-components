@@ -1,7 +1,7 @@
 import React from "react";
 import debounce from "lodash.debounce";
 
-class Debounce extends React.Component {
+export class Debounce extends React.Component {
 	state = { showChildren: false };
 	onMouseMove = debounce(() => this.setState({ showChildren: true }), this.props.seconds * 1000);
 	componentDidMount() {
