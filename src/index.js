@@ -1,3 +1,4 @@
-import Deplay from "./delay";
+import Delay from "./delay";
+import Debounce from "./debounce";
 import Expire from "./expire";
-export { Deplay, Expire };
+export { Delay, Debounce, Expire };
