@@ -1,9 +1,16 @@
 import React from "react";
 import debounce from "lodash.debounce";
+import uniquePropHOC from "./lib/unique-prop-hoc";
 
-export class Debounce extends React.Component {
-	state = { showChildren: false };
-	onMouseMove = debounce(() => this.setState({ showChildren: true }), this.props.seconds * 1000);
+class Debounce extends React.Component {
+	constructor() {
+		super();
+		this.state = { component: null };
+		this.onMouseMove = debounce(this.onMouseMove(this.props.time || this.props.seconds * 1000));
+	}
+	onMouseMove() {
+		this.setState({ component: this.props.children });
+	}
 	componentDidMount() {
 		document.body.addEventListener("mousemove", this.onMouseMove);
 	}
@@ -11,7 +18,9 @@ export class Debounce extends React.Component {
 		document.body.removeEventListener("mousemove", this.onMouseMove);
 	}
 	render() {
-		return this.state.showChildren ? this.props.chidren : null;
+		return this.state.component;
 	}
 }
+
+export default uniquePropHOC(["time", "seconds"])(Debounce);
 
