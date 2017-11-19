@@ -2,13 +2,16 @@
   "name": "react-timer-components",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build5": "babel src --out-dir dist/commonjs --presets=env,react",
+    "build6": "babel src --out-dir dist/es",
+    "build": "npm run build5 && npm run build6",
     "prepublish": "npm run build"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
